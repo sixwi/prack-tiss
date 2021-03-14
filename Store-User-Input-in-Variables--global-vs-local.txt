@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<!-- Demonstration: Storing user input into a global variable -->
+
+<!-- 
+Question found on Quora: 
+How can I store value in variables from user input forms using JavaScript?
+
+Answer by Sean Grogg:
+ In order to obtain the values users are putting into forms you’re going 
+to need to utilize event listeners and callback functions. 
+~credit: Sean Grogg on Quora - https://www.quora.com/profile/Sean-Grogg
+-->
+
+<!-- Code by Sean Grogg and modified by Jed Elkins (sixwi) -->
+
+<style> 
+</style>
+
+</head>
+
+<body>
+
+<h2>Demonstration: Storing user input into a global variable</h2><br>
+<input type="text" id="userName1" /> 
+<input type="button" onclick="myFunction1()" value="Name?">
+<p id="demo1"></p>
+
+<!-- 
+We create a variable, “theirInput”, that will hold the user’s input.
+We add an event listener to “inputElement” that triggers on “change” 
+and will fire an anonymous function when “change” is emitted.
+The anonymous function sets “theirInput” to be equal to the event’s 
+target’s value - which just so happens to be the text that was input by a 
+user in the text field when they are no longer focused on the element 
+~ Notes by Sean Grogg
+-->
+
+<script> 
+  var inputElement = document.getElementById('userName1'); 
+  var theirInput1 = ''; 
+  inputElement.addEventListener('change', function(e) { 
+  theirInput1 = e.target.value; 
+  });  
+  function myFunction1() {
+  document.getElementById('demo1').innerHTML = 'Welcome, ' + theirInput1 + "!"
+  }
+</script>
+
+<!-- 
+This code makes a lot of assumptions and is not made for production use 
+but rather solely as an example. Realistically, you’d likely want to 
+operate on the value of the text field within the anonymous callback 
+function rather than storing it globally. 
+~Notes by Sean Grogg
+-->
+
+<br><hr><br>
+
+
+<!-- Demonstration: Storing user input into a local variable -->
+<!-- Jed Elkins (sixwi) -->
+
+
+<h2>Demonstration: Storing user input into a local variable</h2><br>
+
+<input type="text" id="userName2"> 
+<input type="button" onclick="myFunction2()" value="Name?">
+<p id="demo2"></p>
+
+<script> 
+  //local variable solution
+  function myFunction2() { //creates scope when button is pushed
+  let theirInput2 = new String(document.getElementById("userName2").value); 
+  //above converts input value to string via Id and is assigned to theirInput2
+  document.getElementById('demo2').innerHTML = 'Welcome, ' + theirInput2 + "!";
+  if (theirInput2 == "") {
+  	document.getElementById("demo2").innerHTML = "Please enter a name."
+    }
+  }
+  
+</script>
+
+</body>
+</html>
