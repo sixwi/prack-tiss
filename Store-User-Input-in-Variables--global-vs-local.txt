@@ -68,18 +68,21 @@ function rather than storing it globally.
 <h2>Demonstration: Storing user input into a local variable</h2><br>
 
 <input type="text" id="userName2"> 
-<input type="button" onclick="myFunction2()" value="Name?">
+<input type="button" onclick="myFunction2(), test()" value="Name?">
 <p id="demo2"></p>
-
+<p id="demo3"></p>
 <script> 
   //local variable solution
   function myFunction2() { //creates scope when button is pushed
   let theirInput2 = new String(document.getElementById("userName2").value); 
   //above converts input value to string via Id and is assigned to theirInput2
-  document.getElementById('demo2').innerHTML = 'Welcome, ' + theirInput2 + "!";
+  document.getElementById("demo2").innerHTML = "Welcome, " + theirInput2 + "!";
   if (theirInput2 == "") {
-  	document.getElementById("demo2").innerHTML = "Please enter a name."
+  	document.getElementById("demo2").innerHTML = "Please enter a name.";
     }
+  }
+  function test() { //proof of local scope
+  document.getElementById("demo3").innerHTML = typeof theirInput2;
   }
   
 </script>
