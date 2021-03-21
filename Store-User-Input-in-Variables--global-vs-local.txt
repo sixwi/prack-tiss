@@ -62,7 +62,7 @@ function rather than storing it globally.
 
 
 <!-- Demonstration: Storing user input into a local variable -->
-<!-- Jed Elkins (sixwi) -->
+<!-- Code by Jed Elkins (sixwi) -->
 
 
 <h2>Demonstration: Storing user input into a local variable</h2><br>
@@ -71,19 +71,27 @@ function rather than storing it globally.
 <input type="button" onclick="myFunction2(), test()" value="Name?">
 <p id="demo2"></p>
 <p id="demo3"></p>
+
 <script> 
   //local variable solution
   function myFunction2() { //creates scope when button is pushed
-  let theirInput2 = new String(document.getElementById("userName2").value); 
-  //above converts input value to string via Id and is assigned to theirInput2
-  document.getElementById("demo2").innerHTML = "Welcome, " + theirInput2 + "!";
-  if (theirInput2 == "") {
+  let theirInput2 = document.getElementById("userName2").value; //assigns
+  //input value to theirInput2 via Id
+  welcome = "Welcome, " + theirInput2 + "!";
+  document.getElementById("demo2").innerHTML = welcome;
+
+  //to check type
+  //document.getElementById("demo3").innerHTML = theirInput2 + " is a " + typeof(theirInput2);
+
+  if (theirInput2 == "") { //must enter something
   	document.getElementById("demo2").innerHTML = "Please enter a name.";
     }
   }
-  function test() { //proof of local scope
-  document.getElementById("demo3").innerHTML = typeof theirInput2;
-  }
+
+  //proof of local scope
+  //function test() {
+  //document.getElementById("demo3").innerHTML = typeof(theirInput2);
+  //}
   
 </script>
 
