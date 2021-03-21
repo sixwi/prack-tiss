@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The JavaScript constructor Property</h2>
+
+<p>The <b>typeof</b> operator can determine the type of data but will not determine object types.</p>
+
+<p>The <b>constructor</b> property returns the constructor function for a variable or an object which can determine the type of object.</p>
+
+<p>var <b>a</b> = "john"<br>var <b>b</b> = 3.14<br>var <b>c</b> = false<br>var <b>d</b> = [1,2,3,4]<br>var <b>e</b> = {name:'john', age:34}<br>var <b>f</b> = new Date()<br> function <b>g</b> () {}</p>
+
+<p>Enter a letter from <b>a-g</b> to find out its <em>type</em></p>
+<input type="text" id="letter">
+<input type="button" onclick="findType()" value="Enter">
+
+<p id="typeDemo"></p>
+
+<script>
+var a = "john"
+var b = 3.14
+var c = false
+var d = [1,2,3,4]
+var e = {name:'john', age:34}
+var f = new Date()
+function g() {}
+
+var types = ["String", "Number", "Boolean", "Array", "Object", "Date", "Function"]
+  
+function findType() {
+  let input = document.getElementById("letter").value; 
+  for (let x of types) {
+  if (window[input].constructor === window[x]) {
+    document.getElementById("typeDemo").innerHTML =
+    `${input} is type: ${x}`;
+    }
+  }
+}
+
+/*
+ALTERNATIVE METHOD
+
+function findType() {
+  let input = document.getElementById("letter").value;
+    for (let x of types) {
+      if (window[input].constructor.toString().indexOf(x) > -1) {
+      document.getElementById("typeDemo").innerHTML =
+      `${input} is type: ${x}`;
+    }
+  }
+}
+
+*/
+
+</script>
+
+</body>
+</html>
