@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="avastyle.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,
+  initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Debt Avalanche Tracker</h2>
+  <hr>
+  <p id="instruct">Please fill out the fields
+    and submit for each creditor</p><br>
+  <div id="addCred" class="center" style="width: 50%;">
+    <form name="creditor" id="add" action="debt.html">
+      <fieldset name="box">
+        <br>
+        <legend id="creditor">Creditor 1</legend>
+        <label for="name">Name:</label><br>
+        <input type="text" name="name" placeholder="Discover Card">
+        <br><br>
+        <label for="intRate">Interest Rate:</label><br>
+        <input type="text" name="intRate" placeholder="18.99">
+        <br><br>
+        <label for="balance">Balance:</label><br>
+        <input type="text" name="balance" placeholder="1202.85">
+        <br><br>
+        <label for="payment">Minimum Payment:</label><br>
+        <input type="text" name="payment" placeholder="50.00">
+        <br><br><br>
+        <a class="butn2" onclick="getDebt()">Submit</a><br>
+        <br><br>
+        <input type="submit" onclick="next(), makeArray(),
+      saveData()" value="Done">
+        <br><br>
+      </fieldset>
+    </form>
+  </div>
+  <p id="test" style="font-family: monospace;"></p>
+
+  <script>
+    var credNum;
+    var credList = "";
+    var credTotal = [];
+    var arrayLen;
+    var testText = "";
+    var i;
+    var x;
+    var legend = document.getElementById("creditor");
+    var disp = "";
+    var instruct = document.getElementById("instruct");
+    var test = document.getElementById("test");
+    var cred = [];
+
+    function getNum() {
+      legend.innerHTML = "Creditor 1";
+    }
+
+    var add = (
+      function () {
+        var counter = 0;
+        return function () { counter += 1; return counter; }
+      }()
+    );
+
+    function getDebt() {
+      x = add();
+      instruct.innerHTML =
+        "Click 'Done' when you are finished adding creditors";
+      legend.innerHTML = "Creditor " + (Number(x) + 1);
+      window["cred" + x] = [
+        document.forms["creditor"]["name"].value,
+        Number(document.forms["creditor"]["intRate"].value),
+        Number(document.forms["creditor"]["balance"].value),
+        Number(document.forms["creditor"]["payment"].value)
+      ];
+      document.getElementById("add").reset();
+      test.innerHTML = "Saved: Creditor " + x + "<br>" +
+        window["cred" + x][0] + " - " +
+        window["cred" + x][1] + "% " + " ($" +
+        window["cred" + x][2] + ") - $" +
+        window["cred" + x][3] + "/month";
+    }
+
+    function next() {
+      document.getElementById("add").reset();
+    }
+
+    function makeArray() {
+      for (i = 1; i <= x; i++) {
+        credTotal.push(window["cred" + i]);
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem("debtInfo", JSON.stringify(credTotal));
+    }
+
+  </script>
+</body>
+
+</html>

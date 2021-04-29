@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <link rel="stylesheet" href="avastyle.css">
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      var credTotal = localStorage.getItem("debtInfo");
+      var credArray = JSON.parse(credTotal);
+      var credNum = credArray.length;
+      var showList = document.getElementById("total");
+      var i;
+      var credList = "";
+      for (i = 0; i < credNum; i++) {
+        credList += (i + 1) + "| " +
+        credArray[(i)][0] + " - " +
+        credArray[(i)][1] + "% " +
+        " ($" + credArray[(i)][2] + ") - $" +
+        credArray[(i)][3] + "/month" +
+        "<br><br>";
+      }
+      showList.innerHTML = credList;
+      //document.getElementById("test").innerHTML = credTotal;
+    }
+  </script>
+
+  <div style="text-align: center;">
+    <h2>Debt Avalanche Tracker</h2>
+    <hr>
+    <p id="total" class="sansFont"></p><br><br>
+    <!--<p id="test"></p>;-->
+  </div>
+</body>
+
+</html>
