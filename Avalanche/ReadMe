@@ -1,0 +1,6 @@
+This branch is for creating a Debt Avalance calculator/tracker.
+Users will be able to enter in each cretitor they owe, the balance owed, how much interest they owe, and the monthly minimum payment owed.
+This tracker will figure up the total monthly minimums as a payoff budget, then ask how much more money the user can add to the monthly payoff budget.
+This tracker will then calculate which debt to pay off 1st based on paying off the one with the highest interest rate 1st, in accordance with the Debt Avalanche principal.
+Then, using the Debt Avalance principal, will show what to pay each month on each debt, and as one debt falls off, the budget stays the same until all are paid.
+The tracker will show how long it will take to pay off all the debts and show how much money was saved in interest.
