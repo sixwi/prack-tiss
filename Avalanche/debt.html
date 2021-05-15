@@ -15,12 +15,9 @@
       var i;
       var credList = "";
       for (i = 0; i < credNum; i++) {
-        credList += (i + 1) + "| " +
-        credArray[(i)][0] + " - " +
-        credArray[(i)][1] + "% " +
-        " ($" + credArray[(i)][2] + ") - $" +
-        credArray[(i)][3] + "/month" +
-        "<br><br>";
+        credList += "<u>" + `Creditor ${(i + 1)}` + "</u>" + "<br>" +
+        `${credArray[(i)][0]} - ${credArray[(i)][1]}% ($${
+        credArray[(i)][2]}) - $${credArray[(i)][3]}/month` + "<br><br>";
       }
       showList.innerHTML = credList;
       //document.getElementById("test").innerHTML = credTotal;

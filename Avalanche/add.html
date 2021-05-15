@@ -7,13 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,
   initial-scale=1.0">
-  <title>Document</title>
+  <title>Add Creditors</title>
 </head>
 
 <body>
   <h2>Debt Avalanche Tracker</h2>
   <hr>
-  <p id="instruct">Please fill out the fields
+  <p id="instruct">Please fill out the fields 
     and submit for each creditor</p><br>
   <div id="addCred" class="center" style="width: 50%;">
     <form name="creditor" id="add" action="debt.html">
@@ -35,86 +35,14 @@
         <a class="butn2" onclick="getDebt()">Submit</a><br>
         <br><br>
         <input type="submit" onclick="next(), makeArray(),
-      saveData()" value="Done">
+       saveData()" value="Done">
         <br><br>
       </fieldset>
     </form>
   </div>
   <p id="test" style="font-family: monospace;"></p>
-
-  <script>
-    var credNum;
-    var credList = "";
-    var credTotal = [];
-    var arrayLen;
-    var testText = "";
-    var i;
-    var fi;
-    var x = 0;
-    var legend = document.getElementById("creditor");
-    var disp = "";
-    var instruct = document.getElementById("instruct");
-    var test = document.getElementById("test");
-    var cred = [];
-    
-    function getDebt() {
-      x++;
-        window["cred" + x] = [
-        document.forms["creditor"]["name"].value,
-        Number(document.forms["creditor"]["intRate"].value),
-        Number(document.forms["creditor"]["balance"].value),
-        Number(document.forms["creditor"]["payment"].value)
-      ];
-      for (fi = 1; fi < 5; fi++) {   
-        if (window["cred" + x][fi-1] == "") {
-          x--;
-          document.forms["creditor"].elements[fi].style.backgroundColor =
-           "yellow";
-           document.forms["creditor"].elements[fi].setAttribute("placeholder", "Required");
-          return;
-        }
-      }
-      for (fi = 2; fi < 5; fi++) {   
-        if (isNaN(window["cred" + x][fi-1])) {
-          x--;
-          document.forms["creditor"].elements[fi].style.backgroundColor =
-           "yellow";
-           document.forms["creditor"].elements[fi].value = "";
-           document.forms["creditor"].elements[fi].setAttribute("placeholder", "number without symbols");
-          return;
-        }
-      }
-      document.forms["creditor"].reset();
-      for (fi = 1; fi < 5; fi++) {
-        document.forms["creditor"].elements[fi].style.backgroundColor =
-        "";
-        document.forms["creditor"].elements[fi].setAttribute("placeholder", "");
-      }
-      instruct.innerHTML =
-        "Click 'Done' when you are finished adding creditors";
-      legend.innerHTML = "Creditor " + (Number(x) + 1);
-      test.innerHTML = "Saved: Creditor " + x + "<br>" +
-        window["cred" + x][0] + " - " +
-        window["cred" + x][1] + "% " + " ($" +
-        window["cred" + x][2] + ") - $" +
-        window["cred" + x][3] + "/month";
-    }
-
-    function next() {
-      document.getElementById("add").reset();
-    }
-
-    function makeArray() {
-      for (i = 1; i <= x; i++) {
-        credTotal.push(window["cred" + i]);
-      }
-    }
-
-    function saveData() {
-      localStorage.setItem("debtInfo", JSON.stringify(credTotal));
-    }
-
-  </script>
 </body>
+
+<script src="addjs.js"></script>
 
 </html>
